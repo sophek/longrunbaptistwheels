@@ -16,29 +16,40 @@
 </cfif>
     
  <cfset order = model("product").findOne(order="id DESC", returnAs="query")>
-<cfoutput query="order">    
-<div class="figure">
+<cfoutput query="order"> 
+    <div class="figure" id="figure#id#">
                         <div class="item">
-                            <div class="item-img"> <img src="../images/products/#form.id#.jpg" alt="image">
+                            <div class="item-img">
+                                <img src="../images/products/#id#.jpg" alt="image" id="imgProduct#id#">
+                                   
                                <div class="item-cart">
+                                <a>Click the plus icon to clone and trash to delete.</a>   
+                                   
                                 <div class="btn-group" role="group" aria-label="..." style="float:right;padding-right:10px;padding-top:10px">
                                     <p onclick="duplicateProduct('#id#','#productName#')" style="color:green"><i class="fa fa-plus fa-2x"></i>
                                     </p>
-                                        <p onclick="deleteProduct('#id#','#productName#')" style="color:red"><i class="fa fa-trash fa-2x"></i>
+                                    <p id="remove" onclick="deleteProduct('#id#','#productName#')" style="color:red"><i class="fa fa-trash fa-2x"></i>
                                     </p>
                                 </div>
                             </div>
                             </div>
                             <div class="item-content">
-                                <div class="item-header clearfix"> <span class="headline-lato" id="@#productName#" contenteditable="true">#productName#</span> <span>#DollarFormat(productPrice)#</span> </div>
-                                <p>#productShortDesc#</p>
-                                <p>
-                                    <a class="btn red-btn" ><i class="fa fa-cart-plus">&nbsp;Add To Cart</i></a>
-                                    
-                                </p>
+                                <div class="item-header clearfix"> <span class="headline-lato edit" id="itemProductName#id#">#productName#</span> <span id="itemProductPriceEdit#id#" class="edit">#productPrice#</span> </div>
+                                <p id="itemProductShortDesc#id#" class="edit_area">#productShortDesc#</p>
+                                <div id="itemProductLongDesc#id#" class="edit_area">#productDesc#</div>
+                                <input type="hidden" id="itemProductPrice#id#" value="#productPrice#" />
+                                <input type="hidden" id="itemProductQtyInStock#id#" value="#productQtyInstock#" />
+                                
+                                <div class="btn-group">
+                                <button type="button" class="btn-small btn-red" id="">Add to Cart</button>
+                                <button type="button" class="btn-small btn-red" id="itemDetailsBtn#id#" data-productid="#id#">Details</button>
                             </div>
-                           <div><form id="my-dropzone" action="../uploadme.cfm?imgID=#id#" title="#id#" class="dropzone"></form></div> 
+                            </div>
+                            
+                            <div>
+                                <form id="my-dropzone" action="../uploadme.cfm?imgID=#id#" title="#id#" class="dropzone dz-clickable"><div class="dz-default dz-message"><span>Drop files here to upload</span></div></form></div>
                         </div>
-                    </div> 
+                    </div>
 </cfoutput>    
+         
 

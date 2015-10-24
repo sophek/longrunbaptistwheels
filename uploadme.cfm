@@ -43,6 +43,10 @@ function getClientFileName(fieldName) {
         fileField = "file"  
         destination = "#filePath#"    
         nameConflict = "Overwrite"> 
+        
+        <cfquery name="qry" datasource="longrun" result="qryResult">
+            update products set productImage = '#imgID#.jpg' where id = #imgID#;
+        </cfquery>
 
         
 </cfif>
