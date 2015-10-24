@@ -56,7 +56,7 @@
 <cfif isdefined("session.admin") and session.admin eq "true">
     <cfoutput>
       #javaScriptIncludeTag("http://127.0.0.1:8500/longrunbaptistwheels/javascripts/crud.js?env=local")#
-      #javaScriptIncludeTag("jquery.jeditable.mini.js")#  
+      #javaScriptIncludeTag("jquery.jeditable.mini.js")# 
     </cfoutput>
 </cfif> 
    </body>

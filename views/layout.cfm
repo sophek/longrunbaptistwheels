@@ -1,5 +1,5 @@
 <!--- Title is required --->
-<cfparam name="title" type="string">
+<cfparam name="title" type="string" default="">
 <cfset editable = "true" />
    
     

@@ -29,7 +29,13 @@ if (params.env === 'local'){
 
 $( document ).ready(function() {
     
-
+//Create product
+    
+    $("#createItemProduct").on('click',function(){
+        alert("create product");
+        createProduct();
+        
+    })
    
     
 //DonePageEdit Button
@@ -196,7 +202,8 @@ function deleteme(id, pagename) {
 //        $(this).closest('tr').remove();
 //    });
     
-    var myUrl = baseUrl + "delete.cfm"; 
+    var myUrl = baseUrl + "delete.cfm";
+    
     var mypage = pagename;
       $.post(myUrl, {
               id: id,
@@ -226,8 +233,8 @@ function duplicateProduct(id,pagename){
             if (status == 'success'){
                 var msg = "You successfully duplicated a product";
                 toastr["success"](msg);
-                $("#store").append(data);
-                
+                //$("#store").append(data);
+                location.reload();
             }else{
                 var msgError = "There was an error : " + status;
                 toastr["error"](msgError);  
@@ -238,9 +245,38 @@ function duplicateProduct(id,pagename){
 
 //
 
+
+function createProduct(){
+   
+           var myUrl = baseUrl + "createProduct.cfm"; 
+            $.post(myUrl,
+            {
+              productName: "Item 1",
+              productPrice: 20.00,
+              productImage: "Item1.jpg",
+              productDesc: "Long Description",
+              productShortDesc: "Short Desc",
+              productQtyInStock: 10,    
+                  
+          },
+        function(data, status){
+            if (status == 'success'){
+                var msg = "You successfully created a product";
+                toastr["success"](msg);  
+                 
+            }else{
+                var msgError = "There was an error : " + status;
+                toastr["error"](msgError);  
+            }
+        
+        });
+    }
+
+
 function deleteProduct(id,pagename){
    
-           var myUrl = baseUrl + "deleteProduct.cfm"; 
+           //var myUrl = baseUrl + "deleteProduct.cfm";
+           var myUrl = baseUrl + "index.cfm/products/delete/" + id ; 
             $.post(myUrl,
             {
               id: id,
@@ -249,8 +285,9 @@ function deleteProduct(id,pagename){
         function(data, status){
             if (status == 'success'){
                 var msg = "You successfully deleted a product";
+                $("#figure" + id).remove();
                 toastr["warning"](msg);  
-                 $("#figure" + id).remove();
+                 
             }else{
                 var msgError = "There was an error : " + status;
                 toastr["error"](msgError);  
