@@ -195,13 +195,6 @@ $("#search")
 
 
 function deleteme(id, pagename) {
-
-//$('#pagesTable').on('click','tr button.remove',function(e){
-//        console.log(e);
-//        e.preventDefault();
-//        $(this).closest('tr').remove();
-//    });
-    
     var myUrl = baseUrl + "delete.cfm";
     
     var mypage = pagename;
@@ -233,6 +226,7 @@ function duplicateProduct(id,pagename){
             if (status == 'success'){
                 var msg = "You successfully duplicated a product";
                 toastr["success"](msg);
+                //redirect to the same page page.
                 //$("#store").append(data);
                 location.reload();
             }else{
