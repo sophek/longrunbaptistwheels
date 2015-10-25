@@ -52,7 +52,45 @@
             
         </cfscript> 
     <cfreturn category />
-    </cffunction>     
+    </cffunction> 
+        
+       <cffunction name="QueryStringToStruct" output="false">
+        <cfargument name="QueryString" required="yes" type="string">
+        <cfargument name="objName" required="yes" type="string" default="user"> 
+        <cfargument name="objKey" required="yes" type="string" default="">       
+        <cfset myStruct = StructNew()>
+        <cfset params = StructNew()>
+        <cfloop list="#QueryString#" delimiters="&" index="i">
+            <cfset QueryStringParts = ListToArray(i, "=")>
+            <cfset structInsert(myStruct, Trim(QueryStringParts[1]),Trim(QueryStringParts[2]))>
+        </cfloop>
+        <cfscript> 
+            params = StructNew(); 
+            StructInsert(params, "key", arguments.objKey); 
+            StructInsert(params, arguments.objName, myStruct); 
+        </cfscript>     
+        <cfreturn params />
+</cffunction>
+            
+            
+    <cffunction name="checkForParam">
+      <cfset IsAjax = false />
+        
+        <cfif structKeyExists(form,"param") AND form.param NEQ "">
+            <cfset IsAjax = true />
+        </cfif>
+        
+        <cfif structKeyExists(form,"objName") AND form.objName NEQ "">
+            <cfset IsAjax = true />
+        </cfif>
+        
+        <cfif structKeyExists(form,"key") AND form.key NEQ "">
+            <cfset IsAjax = true />
+        </cfif> 
+        
+        <cfreturn IsAjax />
+    </cffunction>    
+        
             
         
 </cfcomponent>

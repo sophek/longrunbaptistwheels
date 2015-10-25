@@ -73,6 +73,10 @@
 	
 	<!--- products/delete/key --->
 	<cffunction name="delete">
+        <cfif checkForParam()>
+                <cfset params = QueryStringToStruct(form.param,form.objName,form.key) />
+        </cfif>
+        
 		<cfset product = model("Product").findByKey(params.key)>
 		
 		<!--- Verify that the product deletes successfully --->
