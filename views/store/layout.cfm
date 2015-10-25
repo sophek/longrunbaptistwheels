@@ -55,8 +55,11 @@
     <cfoutput>#includePartial(partial="/shared/footer")#</cfoutput>
 <cfif isdefined("session.admin") and session.admin eq "true">
     <cfoutput>
-      #javaScriptIncludeTag("http://127.0.0.1:8500/longrunbaptistwheels/javascripts/crud.js?env=local")#
+      <!---#javaScriptIncludeTag("http://127.0.0.1:8500/longrunbaptistwheels/javascripts/crud.js?env=local")#
       #javaScriptIncludeTag("jquery.jeditable.mini.js")# 
+    --->
+        
+    #javaScriptIncludeTag("crudWheel.js")#    
     </cfoutput>
 </cfif> 
    </body>

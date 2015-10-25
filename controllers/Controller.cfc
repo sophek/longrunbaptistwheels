@@ -54,7 +54,7 @@
     <cfreturn category />
     </cffunction> 
         
-       <cffunction name="QueryStringToStruct" output="false">
+    <cffunction name="QueryStringToStruct" output="false">
         <cfargument name="QueryString" required="yes" type="string">
         <cfargument name="objName" required="yes" type="string" default="user"> 
         <cfargument name="objKey" required="yes" type="string" default="">       
@@ -62,7 +62,8 @@
         <cfset params = StructNew()>
         <cfloop list="#QueryString#" delimiters="&" index="i">
             <cfset QueryStringParts = ListToArray(i, "=")>
-            <cfset structInsert(myStruct, Trim(QueryStringParts[1]),Trim(QueryStringParts[2]))>
+            <cfset eString = Trim(QueryStringParts[2]) />    
+            <cfset structInsert(myStruct, Trim(QueryStringParts[1]),REReplace(eString,"[\\+]"," ","ALL"))>
         </cfloop>
         <cfscript> 
             params = StructNew(); 

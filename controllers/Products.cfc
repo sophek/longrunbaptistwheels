@@ -40,10 +40,10 @@
 	
 	<!--- products/create --->
 	<cffunction name="create">
-        
-        
-        
-		<cfset product = model("Product").new(params.product)>
+        <cfif checkForParam()>
+           <cfset params = QueryStringToStruct(form.param,form.objName,form.key) />
+        </cfif>
+        <cfset product = model("Product").new(params.product)>
 		
 		<!--- Verify that the product creates successfully --->
 		<cfif product.save()>
@@ -88,6 +88,14 @@
 			<cfset flashInsert(error="There was an error deleting the product.")>
 			<cfreturn redirectTo(action="index", delay=true)>
 		</cfif>
+	</cffunction>
+            
+    <cffunction name="duplicate">
+        <cfif checkForParam()>
+                <cfset params = QueryStringToStruct(form.param,form.objName,form.key) />
+        </cfif>    
+        <cfset product = model("Product").findByKey(params.key)>
+        <cfset duplicateOfProduct = product.clone(recurse=false) />
 	</cffunction>
 	
 </cfcomponent>

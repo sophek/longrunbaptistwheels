@@ -1,4 +1,56 @@
-$( document ).ready(function() {
+
+//Delete Product     
+    
+function deleteProduct(id,productname){
+           var obj = {
+               action : "/products/delete",
+               productName : productname,
+               productPrice : 20,
+               key: id,
+               objName: "product",
+               successDiv : "success",
+               removeDiv : "#figure" + id
+           }
+           postAjax(obj);
+    }
+
+
+// Duplicate Product
+
+function duplicateProduct(id,productname){
+           var obj = {
+               action : "/products/duplicate",
+               productName : productname,
+               productPrice : 20,
+               key: id,
+               objName: "product",
+               successDiv : "success",
+               removeDiv : "reload"
+           }
+           postAjax(obj);
+    }
+
+
+function createProduct(){
+           var obj = {
+               action : "/products/create",
+               productName : "Newest Itme",
+               productPrice : 20,
+               productImage : "Item.jpg",
+               productQtyInStock : 20,
+               productShortDesc : "Short Desc",
+               productDesc : "Long Desc",
+               key: 0,
+               objName: "product",
+               successDiv : "success",
+               removeDiv : "reload"
+           }
+           postAjax(obj);
+    }
+
+
+
+    
     function postAjax(obj){
         
         // create the url to post to
@@ -7,6 +59,7 @@ $( document ).ready(function() {
         var params = obj;
         // serialize this object
         var str = jQuery.param( params ); 
+        
         // create a variable to hold tha action status to make up for messages error and success
         var actionNameMsg = "" ;
         //this function will get the actionUrl and spit out the action ie , update, delete, and create
@@ -28,6 +81,10 @@ $( document ).ready(function() {
             actionNameMsg = 'deleted'
         }
         
+        if (getActionURL('duplicate') === 'duplicate'){
+            actionNameMsg = 'duplicated'
+        }
+        
         var successMsg = "The " + obj.objName + " was " + actionNameMsg + " successfully!"
         var errorMsg = "The " + obj.objName + " was not " + actionNameMsg + " successfully!"
         
@@ -39,7 +96,15 @@ $( document ).ready(function() {
           }, //if any success or failure display that to the user via the toaster notification.       
           function (data, status) {
               if (status == 'success') {
-                 toastr["success"](successMsg);  
+                 toastr["success"](successMsg);
+                  if (obj.removeDiv !== ''){
+                      if(obj.removeDiv === 'reload'){
+                           location.reload();
+                      }else {
+                           $(obj.removeDiv).remove();
+                      }
+                         
+                  }
               } else {
                   toastr["error"](errorMsg);
               }
@@ -48,6 +113,10 @@ $( document ).ready(function() {
                 console.log(xhr)
             });
     }
-}
+
+ 
+
+
+    
 
 

@@ -48,7 +48,7 @@
                                 <div class="btn-group" role="group" aria-label="..." style="float:right;padding-right:10px;padding-top:10px">
                                     <p onclick="duplicateProduct('#id#','#productName#')" style="color:green"><i class="fa fa-plus fa-2x"></i>
                                     </p>
-                                    <p id="remove" onclick="deleteProduct('#id#','#productName#')" style="color:red"><i class="fa fa-trash fa-2x"></i>
+                                    <p id="removed" onclick="deleteProduct('#id#','#productName#')" style="color:red"><i class="fa fa-trash fa-2x"></i>
                                     </p>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                 
                                 <div class="btn-group">
                                 <button type="button" class="btn-small btn-red">Add to Cart</button>
-                                <button type="button" class="btn-small btn-red" id="itemDetailsBtn#id#" data-productid="#id#">Details</button>
+                                <button type="button detailsBtn" class="btn-small btn-red" id="itemDetailsBtn#id#" data-productid="#id#">Details</button>
                             </div>
                             </div>
                             
@@ -70,6 +70,8 @@
                         </div>
                     </div>
                     </cfoutput>  
+                    
+                    <button onclick="createProduct()">create product</button>
                     
                 </aside>
             </div>
@@ -82,73 +84,4 @@
 }
 </style>
 
- <script>
-               
-$(document).ready(function() {
-    
-                    $('.edit').editable('http://127.0.0.1:8500/longrunbaptistwheels/updateProduct.cfm');
-                    $('.edit_area').editable('http://127.0.0.1:8500/longrunbaptistwheels/updateProduct.cfm', {
-                     type      : 'textarea',
-                     cancel    : 'Cancel',
-                     submit    : 'OK',
-                     indicator : '<img src="img/indicator.gif">',
-                     tooltip   : 'Click to edit...'
-                 });
-                    
-                 });
-               
-                        
-                    $("#storeItem-details").hide();
-                        
-                    $("button").on('click',function(evt){
-                     
-                        // Set a data param so the image won't cache.
-                        d = new Date();
-                        var imgId = evt.target.getAttribute('data-productid')
-                        //Get the short desc of the item clicked
-                        
-                        var shortDesc = $("#itemProductShortDesc" + imgId)[0].innerHTML;
-                        var longDesc = $("#itemProductLongDesc" + imgId)[0].innerHTML;
-                        //
-                        var itemName = $("#itemProductName" + imgId)[0].innerHTML;
-                        var itemPrice = $("#itemProductPrice" + imgId).val();
-                        var itemQtyInStock = $("#itemProductQtyInStock" + imgId).val();
-                      
-                        // This is to show the item details on button click.
-                        $("#itemProductShortDesc").html(shortDesc);
-                        $(".itemProductLongDesc").html(longDesc);
-                        $("#itemProductName").html(itemName); 
-                        $("#itemProductPrice").html(itemPrice);
-                        
-                        
-                        var imgUrl = "../images/products/" + imgId + ".jpg" + "?" + d.getTime(); 
-                        $("#imgProductDetails").attr("src",imgUrl);
-                        $("#storeItem-details").toggle();
-                        $("#store").toggle();
-                       
-                    })  
-                    
-                    $(".continueShoppingBtn").on('click',function(evt){
-                        $("#storeItem-details").toggle();
-                        $("#store").toggle();
-                       
-                    })    
-    
-                    Dropzone.options.myDropzone = {
-                      init: function() {
-                          
-                        //this.on("addedfile", function(file) { alert("Added file."); });  
-                          
-                        this.on("complete", function(file) {
-                        d = new Date();
-                          //this.options.url = "/some-other-url";
-                            var imgId = this.element.title;
-                            var imgUrlId = "#imgProduct" + imgId;
-                            var imgUrl = "../images/products/" + imgId + ".jpg" + "?" + d.getTime(); 
-                            $(imgUrlId).attr("src",imgUrl);
-                            this.removeFile(file);
-                        });
-                      }
-                    };   
-                </script>
           
