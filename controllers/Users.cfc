@@ -40,6 +40,23 @@
 	
 	<!--- users/create --->
 	<cffunction name="create">
+      <cfset IsAjax = false />
+              <cfif structKeyExists(form,"username") And form.username NEQ "">
+                  <cfset IsAjax = true />
+              </cfif>
+              <cfif structKeyExists(form,"password") And form.password NEQ "">
+                  <cfset IsAjax = true />
+              </cfif>
+              
+              <cfif IsAjax>
+                  <cfset params= { 
+                     user= { 
+                          username=form.username , 
+                          password=form.password
+                          } 
+                     } />
+              </cfif>
+        
 		<cfset user = model("User").new(params.user)>
 		
 		<!--- Verify that the user creates successfully --->
@@ -52,9 +69,31 @@
 			<cfset renderPage(action="new")>
 		</cfif>
 	</cffunction>
+            
+    <cffunction name="QueryStringToStruct" output="false">
+        <cfargument name="QueryString" required="yes" type="string">
+        <cfargument name="objName" required="yes" type="string" default="user"> 
+        <cfargument name="objKey" required="yes" type="string" default="">       
+        <cfset myStruct = StructNew()>
+        <cfset params = StructNew()>
+        <cfloop list="#QueryString#" delimiters="&" index="i">
+            <cfset QueryStringParts = ListToArray(i, "=")>
+            <cfset structInsert(myStruct, Trim(QueryStringParts[1]),Trim(QueryStringParts[2]))>
+        </cfloop>
+        <cfscript> 
+            params = StructNew(); 
+            StructInsert(params, "key", arguments.objKey); 
+            StructInsert(params, arguments.objName, myStruct); 
+        </cfscript>     
+        <cfreturn params />
+</cffunction>        
 	
 	<!--- users/update --->
 	<cffunction name="update">
+        <cfset IsAjax = false />
+        
+        <cfset params = QueryStringToStruct('#form.param#','#form.objName#','#form.key#') />
+        
 		<cfset user = model("User").findByKey(params.key)>
 		
 		<!--- Verify that the user updates successfully --->

@@ -40,6 +40,9 @@
 	
 	<!--- products/create --->
 	<cffunction name="create">
+        
+        
+        
 		<cfset product = model("Product").new(params.product)>
 		
 		<!--- Verify that the product creates successfully --->

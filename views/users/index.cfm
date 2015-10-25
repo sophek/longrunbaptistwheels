@@ -19,3 +19,47 @@
 	<cfcol header="" text="#linkTo(text='Delete', action='delete', key=id, confirm='Are you sure?')#" />
 </cftable>
 
+<button id="test">test</button>
+
+<script>
+    
+    function postAjax(obj){
+        
+        // create the url to post to
+        var fullUrl = "http://127.0.0.1:8500/longrunbaptistwheels/index.cfm" + obj.action;
+        // create an object and call it params
+        var params = obj;
+        // serialize this object
+        var str = jQuery.param( params ); 
+        
+        $.post(fullUrl, {
+              param : str,
+              key: obj.key,
+              objName : obj.objName
+          },
+          function (data, status) {
+              if (status == 'success') {
+                 toastr["success"](obj.successMsg);  
+              } else {
+                  toastr["success"](obj.errorMsg);
+              }
+          });
+    }
+    
+    
+$("#test").on('click',function(){
+    
+   var obj = {
+       action : "/users/update",
+       username : "soap",
+       password : "newpassword",
+       key: 14,
+       objName: "user",
+       successMsg: "The user was updated successfully!",
+       errorMsg: "Sorry there was something wrong with update.",
+       successDiv : "success"
+   }
+   postAjax(obj);
+    
+})
+</script>

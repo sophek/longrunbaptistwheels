@@ -34,8 +34,32 @@ $( document ).ready(function() {
     $("#createItemProduct").on('click',function(){
         alert("create product");
         createProduct();
-        
     })
+    
+    
+    
+   function postAjax(obj){
+        
+        // create the url to post to
+        var fullUrl = "http://127.0.0.1:8500/longrunbaptistwheels/index.cfm" + obj.action;
+        // create an object and call it params
+        var params = obj;
+        // serialize this object
+        var str = jQuery.param( params ); 
+        
+        $.post(fullUrl, {
+              param : str,
+              key: obj.key,
+              objName : obj.objName
+          },
+          function (data, status) {
+              if (status == 'success') {
+                 toastr["success"](obj.successMsg);  
+              } else {
+                  toastr["success"](obj.errorMsg);
+              }
+          });
+    }    
    
     
 //DonePageEdit Button
