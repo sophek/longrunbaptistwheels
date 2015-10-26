@@ -13,7 +13,7 @@
     #javaScriptIncludeTag("vendor/modernizr.js")#
     #javaScriptIncludeTag("dropzone.js")#    
     #javaScriptIncludeTag("https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")#
-    #javaScriptIncludeTag("//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js")#
+    #javaScriptIncludeTag(" //cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js")#
     #javaScriptIncludeTag("//cdn.ckeditor.com/4.5.4/standard/ckeditor.js")#   
     #styleSheetLinkTag("//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css")# 
     #styleSheetLinkTag("dropzone.css")#
@@ -59,7 +59,7 @@
       #javaScriptIncludeTag("jquery.jeditable.mini.js")# 
     --->
         
-    #javaScriptIncludeTag("crudWheel.js")#    
+    #javaScriptIncludeTag("store.js")#    
     </cfoutput>
 </cfif> 
    </body>

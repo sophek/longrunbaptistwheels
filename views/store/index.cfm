@@ -1,10 +1,9 @@
 
       <div class="container">
         <div class="row">
-            
             <div class="wrapper clearfix">
-                
-                  <aside class="content contact-wrap" id="storeItem-details">
+                <!-- Store Item Details -->
+                <aside class="content contact-wrap" id="storeItem-details">
                     <div class="store-details-wrap clearfix">
                         <div class="fig-shop clearfix">
                             <aside class="fig-shop-img"> <img src="images/content/book.jpg" alt="image" id="imgProductDetails"> </aside>
@@ -33,8 +32,7 @@
                         </div>
                     </div>
                 </aside>
-                
-                
+                <!-- Store -->
                 <aside class="content clearfix" id="store">
                     <cfoutput query="qry">
                     <div class="figure" id="figure#id#">
@@ -62,7 +60,7 @@
                                 
                                 <div class="btn-group">
                                 <button type="button" class="btn-small btn-red">Add to Cart</button>
-                                <button type="button detailsBtn" class="btn-small btn-red" id="itemDetailsBtn#id#" data-productid="#id#">Details</button>
+                                <button type="button" class="btn-small btn-red detailsBtn" id="itemDetailsBtn#id#" data-productid="#id#">Details</button>
                             </div>
                             </div>
                             
@@ -70,18 +68,7 @@
                         </div>
                     </div>
                     </cfoutput>  
-                    
-                    <button onclick="createProduct()">create product</button>
-                    
                 </aside>
             </div>
         </div>
     </div>
-
-<style>
-.democlass {
-    color: red;
-}
-</style>
-
-          
