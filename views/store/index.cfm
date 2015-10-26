@@ -8,9 +8,9 @@
                         <div class="fig-shop clearfix">
                             <aside class="fig-shop-img"> <img src="images/content/book.jpg" alt="image" id="imgProductDetails"> </aside>
                             <aside class="fig-shop-content">
-                                <h4 class="headline-lato edit" id="itemProductName">Bundle of books</h4>
-                                <h5 id="itemProductPrice">$262</h5>
-                                <p class="paragraph_opensans" id="itemProductShortDesc"></p>
+                                <h4 class="headline-lato edit" id="itemProductName" data-columnname="productName" data-productid="">Bundle of books</h4>
+                                <h5 id="itemProductPrice" data-columnname="productPrice" data-productid="" class="edit">$262</h5>
+                                <p class="paragraph_opensans edit_area" id="itemProductShortDesc" data-columnname="productShortDesc" data-productid=""></p>
                                 <div class="avilable-wrap clearfix">
                                     <div class="avl-wrp"> <span>availability:</span> <span>available</span> </div>
                                     <div class="avl-wrp"> <span>quality:</span> <i class="fa fa-angle-left"></i> <span>5</span> <i class="fa fa-angle-right"></i> </div> <a class="btn-small btn-red">Add to cart</a> <a class="btn-small btn-red continueShoppingBtn">Continue Shopping</a></div>
@@ -25,7 +25,7 @@
                                     </li>
                                 </ul>
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active itemProductLongDesc" id="home"></div>
+                                    <div role="tabpanel" class="tab-pane active itemProductLongDesc edit_area" id="home" data-columnname="productDesc" data-productid=""></div>
                                     <div role="tabpanel" class="tab-pane" id="messages">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</div>
                                 </div>
                             </div>
@@ -41,12 +41,11 @@
                                 <img src="../images/products/#productImage#" alt="image" id="imgProduct#id#">
                                    
                                <div class="item-cart">
-                                <a>Click the plus icon to clone and trash to delete.</a>   
+                                <a>Click the plus icon to duplicate and trash to delete.</a>   
                                    
                                 <div class="btn-group" role="group" aria-label="..." style="float:right;padding-right:10px;padding-top:10px">
-                                    <p class="updateProductbtn" onclick="updateProduct('#id#')" style="color:green" data-productid="#id#"><i class="fa fa-wrench fa-2x"></i></p>
-                                    <p onclick="duplicateProduct('#id#','#productName#')" style="color:green"><i class="fa fa-plus fa-2x"></i></p>
-                                    <p id="removed" onclick="deleteProduct('#id#','#productName#')" style="color:red"><i class="fa fa-trash fa-2x"></i></p>
+                                    <p onclick="duplicateProduct('#id#','#productName#')" style="color:white"><i class="fa fa-plus fa-2x"></i></p>
+                                    <p id="removed" onclick="deleteProduct('#id#','#productName#')" style="color:white"><i class="fa fa-trash fa-2x"></i></p>
                                 </div>
                             </div>
                             </div>

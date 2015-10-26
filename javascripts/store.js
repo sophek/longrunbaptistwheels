@@ -20,9 +20,17 @@ $(".detailsBtn").on('click', function (evt) {
 
     // This is to show the item details on button click.
     $("#itemProductShortDesc").html(shortDesc);
+    $("#itemProductShortDesc").attr("data-productid", imgId);
+    
     $(".itemProductLongDesc").html(longDesc);
+    $(".itemProductLongDesc").attr("data-productid", imgId);
+    
     $("#itemProductName").html(itemName);
+    //change the data-productid on the fly so we can update it via the id 
+    $("#itemProductName").attr("data-productid", imgId);
+    //
     $("#itemProductPrice").html(itemPrice);
+    $("#itemProductPrice").attr("data-productid", imgId);
 
 
     var imgUrl = "../images/products/" + imgId + ".jpg" + "?" + d.getTime();
@@ -84,8 +92,8 @@ function createProduct(){
                action : "/products/create",
                productName : $("#itemProductNameInput").val(),
                productPrice : $("#itemProductPriceInput").val(),
-               productImage : "Item.jpg",
-               productQtyInStock : 20,
+               productImage : $("#itemProductIdInput").val() + ".jpg",
+               productQtyInStock : $("#itemProductQtyInStockInput").val(),
                productShortDesc : $("#itemProductShortDescInput").val(),
                productDesc : $("#itemProductDescInput").val(),
                key: 0,
@@ -143,6 +151,22 @@ function updateProduct(id){
                     };
 
 
+ Dropzone.options.myDropzone2 = {
+                      init: function() {
+                          
+                        //this.on("addedfile", function(file) { alert("Added file."); });  
+                          
+                        this.on("complete", function(file) {
+                        d = new Date();
+                          //this.options.url = "/some-other-url";
+                            var imgId = this.element.title;
+                            var imgUrlId = "#imgProduct" + imgId;
+                            var imgUrl = "../images/products/" + imgId + ".jpg" + "?" + d.getTime(); 
+                            $(imgUrlId).attr("src",imgUrl);
+                            //this.removeFile(file);
+                        });
+                      }
+                    };
 
 // postAjax is hte main function to interact with the server
     

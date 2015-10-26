@@ -1,13 +1,18 @@
+<cfset currentId = model("product").maximum("id")>
+<cfset currentId = currentId + 1>
+    
 <div class="header-top">
         <div class="container">
           <div class="row">
             <div id="entrybox">
                 <br />
-                <form class="form-inline">
+                <div class="form-inline">
                 <div class="form-group">
                   <label for="itemProductNameInput">Item Name</label><br />
                   <input type="text" class="form-control input-lg" id="itemProductNameInput" placeholder="Item Name" name="itemProductNameInput">
-                    <input type="hidden"  id="itemProductIdInput" placeholder="Item Name" name="itemProductIdInput">
+                    <cfoutput>
+                        <input type="hidden"  id="itemProductIdInput" placeholder="Item Name" name="itemProductIdInput" value="#currentId#">
+                    </cfoutput>    
                 </div>
                 <div class="form-group">
                   <label for="itemProductPriceInput">Item Price</label><br />
@@ -26,12 +31,22 @@
                   <input type="text" class="form-control input-lg" id="itemProductDescInput" placeholder="Item Long Description" name="itemProductDescInput">
                 </div>    
                 <div class="form-group">
-                  <a class="btn red-btn" id="createItemProduct" title="Submit"><i class="fa fa-location-arrow">&nbsp;Create</i></a><a class="btn red-btn" id="updateItemProduct" title="Submit"><i class="fa fa-location-arrow">&nbsp;Update</i></a>
+                  <label for="itemProductDescInput">Item Image</label><br />
+                    <cfoutput>
+                       <form id="my-dropzone2" action="../uploadme.cfm?imgID=#currentId#" title="#currentId#" class="dropzone"></form>
+                    </cfoutput>    
+                </div>    
+                
+                <div class="form-group">
+                  <a class="btn red-btn" id="createItemProduct" title="Submit"><i class="fa fa-location-arrow">&nbsp;Create</i></a>
                 </div>
+                    
                 <div class="form-group" id="success">
                   
                 </div>
-              </form>
+              </div>
+                
+                
                 <br />
             </div>
           </div>
