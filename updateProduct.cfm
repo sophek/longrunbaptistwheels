@@ -1,4 +1,11 @@
 <cfsilent>
+<cfif isdefined("form.id")>
+    <cfset id = form.id>
+    <cfset columnnameToUpdate = form.name />
+</cfif>    
+
+    <!--- 
+
 <cfif isdefined("form.id") and trim(form.id) contains "itemProductName">
     <cfset id = replace(form.id,"itemProductName","","ALL") />
     <cfset columnnameToUpdate = "productname" />
@@ -15,8 +22,20 @@
     <cfset id = replace(form.id,"itemProductLongDesc","","ALL") />
     <cfset columnnameToUpdate = "productDesc" />
 </cfif>
-<cfquery name="qry" datasource="longrun" result="qryResult">
+
+
+    <cfquery name="qry" datasource="longrun" result="qryResult">
         update products set #columnnameToUpdate# = '#form.value#' where id = #id#;
-</cfquery>
+</cfquery>  
+
+
+--->
+    
+    <cfquery name="qry" datasource="longrun" result="qryResult">
+        update products set #columnnameToUpdate# = '#form.value#' where id = #id#;
+</cfquery>  
+    
+  
+    
 </cfsilent>    
 <cfoutput>#trim(form.value)#</cfoutput>

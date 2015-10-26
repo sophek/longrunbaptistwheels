@@ -1,5 +1,5 @@
 
-
+var baseUrl = "http://127.0.0.1:8500/longrunbaptistwheels/";
 
 $("#storeItem-details").hide();
 
@@ -212,6 +212,49 @@ function updateProduct(id){
 
 $(document).ready(function() {
 // Initalize data
+
+    
+    
+    
+      $(".edit").editable(baseUrl + 'index.cfm/products/updateJeditable', {
+
+    type      :   'text',
+    tooltip   :   'Click to edit...',
+    onblur    :   'submit',
+    event     :   'click',
+    submitdata : function() {
+   
+    var colname = this;
+    var columnname = $(colname).attr("data-columnname");
+    var productid =  $(colname).attr("data-productid");   
+           
+      return {
+            id : productid,
+            name : columnname
+            };
+    }
+  });
+    
+    
+     $(".edit_area").editable(baseUrl + 'index.cfm/products/updateJeditable', {
+         type : 'textarea',
+         cancel: 'Cancel',
+         submit: 'OK',
+         indicator: '<img src="img/indicator.gif">',
+         tooltip: 'Click to edit...',
+         submitdata: function () {
+
+             var colname = this;
+             var columnname = $(colname).attr("data-columnname");
+             var productid = $(colname).attr("data-productid");
+
+             return {
+                 id: productid,
+                 name: columnname
+             };
+         }
+     });   
+    
     
     $(".updateProductbtn").on('click',function(evt){
         var id = evt.currentTarget.getAttribute('data-productid');

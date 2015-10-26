@@ -8,7 +8,7 @@
                         <div class="fig-shop clearfix">
                             <aside class="fig-shop-img"> <img src="images/content/book.jpg" alt="image" id="imgProductDetails"> </aside>
                             <aside class="fig-shop-content">
-                                <h4 class="headline-lato" id="itemProductName">Bundle of books</h4>
+                                <h4 class="headline-lato edit" id="itemProductName">Bundle of books</h4>
                                 <h5 id="itemProductPrice">$262</h5>
                                 <p class="paragraph_opensans" id="itemProductShortDesc"></p>
                                 <div class="avilable-wrap clearfix">
@@ -51,9 +51,9 @@
                             </div>
                             </div>
                             <div class="item-content">
-                                <div class="item-header clearfix"> <span class="headline-lato edit" id="itemProductName#id#">#productName#</span> <span id="itemProductPriceEdit#id#" class="edit">#productPrice#</span> </div>
-                                <p id="itemProductShortDesc#id#" class="edit_area">#productShortDesc#</p>
-                                <div id="itemProductLongDesc#id#" class="edit_area">#productDesc#</div>
+                                <div class="item-header clearfix"> <span class="headline-lato edit" id="itemProductName#id#" data-columnname="productName" data-productid="#id#">#productName#</span> <span id="itemProductPriceEdit#id#" data-columnname="productPrice" data-productid="#id#" class="edit">#productPrice#</span> </div>
+                                <p id="itemProductShortDesc#id#" class="edit_area" data-columnname="productShortDesc" data-productid="#id#">#productShortDesc#</p>
+                                <div id="itemProductLongDesc#id#" class="edit_area" data-columnname="productDesc" data-productid="#id#">#productDesc#</div>
                                 <input type="hidden" id="itemProductPrice#id#" value="#productPrice#" />
                                 <input type="hidden" id="itemProductQtyInStock#id#" value="#productQtyInstock#" />
                                 
@@ -66,7 +66,7 @@
                            <div><form id="my-dropzone" action="../uploadme.cfm?imgID=#id#" title="#id#" class="dropzone"></form></div> 
                         </div>
                     </div>
-                    </cfoutput>  
+                    </cfoutput>
                 </aside>
             </div>
         </div>

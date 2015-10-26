@@ -59,7 +59,8 @@
       #javaScriptIncludeTag("jquery.jeditable.mini.js")# 
     --->
         
-    #javaScriptIncludeTag("store.js")#    
+    #javaScriptIncludeTag("store.js")#
+     #javaScriptIncludeTag("jquery.jeditable.mini.js")#     
     </cfoutput>
 </cfif> 
    </body>

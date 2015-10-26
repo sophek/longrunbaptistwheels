@@ -73,7 +73,23 @@
 			<cfset flashInsert(error="There was an error updating the product.")>
 			<cfset renderPage(action="edit")>
 		</cfif>
-	</cffunction>
+	</cffunction>	
+            
+    <cffunction name="updateJeditable">
+    <cfsilent>
+        <cfif isdefined( "form.id")>
+            <cfset id=form.id>
+            <cfset columnnameToUpdate=form.name />
+        </cfif>
+        <cfquery name="qry" datasource="longrun" result="qryResult">
+            update products set #columnnameToUpdate# = '#form.value#' where id = #id#;
+        </cfquery>
+    </cfsilent>
+    <cfset myvalue = trim(form.value) />
+</cffunction>
+            
+            
+            
 	
 	<!--- products/delete/key --->
 	<cffunction name="delete">
