@@ -61,19 +61,14 @@ toastr.options = {
     function(data, status){
         $("#page").val("");   
         //alert("Data: " + data + "\nStatus: " + status);
-        loadPages();
+        //loadPages();
         $("#success").html(data);
     });     
     }
 });
 //End Create New page  
     
-    function loadPages(){
-    var myUrl = baseUrl + "listofpages.cfm"; 
-    $.get( myUrl, function( data ) {
-      $( "#headings" ).html( data );
-    }); 
-}
+    
     
     
 	/*---------------  sliderpage ------------------*/

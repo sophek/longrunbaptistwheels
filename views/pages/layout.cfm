@@ -81,6 +81,9 @@
    
     <!-- start of store --> 
     <section class="store">
+        
+        <!---  --->
+        
       <div class="container">
         <div class="row">
             <cfoutput>#includePartial(partial="/shared/modal")#</cfoutput>
@@ -148,10 +151,9 @@
       </div>
     </section>
     <cfoutput>
-        #includePartial(partial="/shared/footer")#
-        #javaScriptIncludeTag("#serverURL#/javascripts/ajaxaction.js?cfm=update.cfm&env=local")#
-        #javaScriptIncludeTag("#serverURL#/javascripts/crud.js?env=local")#
-        #javaScriptIncludeTag("editablepages")#  
+        #includePartial(partial="/shared/footer")# 
+        #javaScriptIncludeTag("postajax.js")# 
+        #javaScriptIncludeTag("pages.js")# 
       </cfoutput>
    </body>
 </html>

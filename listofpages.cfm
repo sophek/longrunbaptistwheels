@@ -4,7 +4,7 @@
 
 
 <cfif isdefined("form.q") and form.q neq "">
-    <cfset qry = model("wp_post").findAll(select="id,post_name, post_title, post_excerpt, post_content,categoryid", where="post_title like '%#form.q#%'")>          
+    <cfset qry = model("post").findAll(select="id,post_name, post_title, post_excerpt, post_content,categoryid", where="post_title like '%#form.q#%'")>          
 <cfelse>
     
     <cfif isdefined("form.categorynum") and form.categorynum neq "">
@@ -14,7 +14,7 @@
 
     </cfif>    
           
-    <cfset qry = model("wp_post").findAll(select="id,post_name, post_title, post_excerpt, post_content,categoryid", where="#sqlwhere#", page=#form.pagenum#, perPage=20, order="ID DESC")>          
+    <cfset qry = model("post").findAll(select="id,post_name, post_title, post_excerpt, post_content,categoryid", where="#sqlwhere#", page=#form.pagenum#, perPage=20, order="ID DESC")>          
 </cfif>
     <cfset qryCategory = model("category").findAll(select="id,categoryname", order="categoryname ASC")> 
 

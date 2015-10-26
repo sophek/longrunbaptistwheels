@@ -210,11 +210,6 @@ function updateProduct(id){
     }
 
 
-function foo(){
-    alert("hello");
-}
-
-
 $(document).ready(function() {
 // Initalize data
     
