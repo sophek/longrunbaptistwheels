@@ -11,7 +11,7 @@
                 </div>
                 <div class="form-group">
                   <label for="itemProductPriceInput">Item Price</label><br />
-                  <input type="text" class="form-control input-lg" id="itemProductPriceInput" placeholder="Item Price" name="itemProductPriceInput">
+                  <input type="text" class="form-control input-lg col-sm" id="itemProductPriceInput" placeholder="Item Price" name="itemProductPriceInput">
                 </div>
                      <div class="form-group">
                   <label for="itemProductQtyInStockInput">Item Qty. InStock</label><br />

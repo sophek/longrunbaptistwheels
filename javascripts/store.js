@@ -108,32 +108,18 @@ function updateProductFinal(){
                key:$("#itemProductIdInput").val() ,
                objName: "product",
                successDiv : "success",
-               removeDiv : "reload"
+               removeDiv : "noremove"
            };
            postAjax(obj);
     }
 
 function updateProduct(id){
-           var obj = {
-               action : "/products/update",
-               productName : "update test item",
-               productPrice : 5.00,
-               productImage : "update Item.jpg",
-               productQtyInStock : 20,
-               productShortDesc : "short desc",
-               productDesc : "long desc",
-               key: id,
-               objName: "product",
-               successDiv : "success",
-               removeDiv : "reload"
-           };
     
     $('html, body').animate({ scrollTop: 0 }, 'slow');
     var isVisible = $( "#entrybox" ).is( ":visible" );
     if (!isVisible){
         $("#entrybox").toggle("slow");
     }
-           //postAjax(obj);
     }
 
 
@@ -236,11 +222,20 @@ $(document).ready(function() {
         var id = evt.currentTarget.getAttribute('data-productid');
         console.log(evt.currentTarget.getAttribute('data-productid'));
         prepopulate(id);
+        $("#createItemProduct").hide();
         
     })
     
     $("#updateItemProduct").on('click',function(evt){
         updateProductFinal();
+        var id = $("#itemProductIdInput").val();
+        $("#itemProductName" + id)[0].innerHTML = $("#itemProductNameInput").val();
+        $("#itemProductPriceEdit" + id)[0].innerHTML =  $("#itemProductPriceInput").val(); 
+        $("#itemProductShortDesc" + id)[0].innerHTML =  $("#itemProductShortDescInput").val();
+        $("#itemProductLongDesc" + id)[0].innerHTML =  $("#itemProductDescInput").val();
+        $("#itemProductShortDesc" + id)[0].innerHTML =  $("#itemProductShortDescInput").val();
+        $("#itemProductPrice" + id).val($("#itemProductPriceInput").val());
+        $("#itemProductQtyInStock" + id).val($("#itemProductQtyInStockInput").val());
     })
     
     function prepopulate(id){

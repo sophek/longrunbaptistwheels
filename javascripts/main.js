@@ -35,6 +35,7 @@ toastr.options = {
     // Add a toggle to the page title entry box
     $( "#pageEntrybox" ).click(function() {
         $( "#entrybox" ).toggle( "slow" );
+        $("#createItemProduct").show();
     });
     
     
