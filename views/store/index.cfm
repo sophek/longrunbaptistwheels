@@ -44,10 +44,9 @@
                                 <a>Click the plus icon to clone and trash to delete.</a>   
                                    
                                 <div class="btn-group" role="group" aria-label="..." style="float:right;padding-right:10px;padding-top:10px">
-                                    <p onclick="duplicateProduct('#id#','#productName#')" style="color:green"><i class="fa fa-plus fa-2x"></i>
-                                    </p>
-                                    <p id="removed" onclick="deleteProduct('#id#','#productName#')" style="color:red"><i class="fa fa-trash fa-2x"></i>
-                                    </p>
+                                    <p class="updateProductbtn" onclick="updateProduct('#id#')" style="color:green" data-productid="#id#"><i class="fa fa-wrench fa-2x"></i></p>
+                                    <p onclick="duplicateProduct('#id#','#productName#')" style="color:green"><i class="fa fa-plus fa-2x"></i></p>
+                                    <p id="removed" onclick="deleteProduct('#id#','#productName#')" style="color:red"><i class="fa fa-trash fa-2x"></i></p>
                                 </div>
                             </div>
                             </div>

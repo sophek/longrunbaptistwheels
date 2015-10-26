@@ -58,6 +58,10 @@
 	
 	<!--- products/update --->
 	<cffunction name="update">
+        <cfif checkForParam()>
+            <cfset params = QueryStringToStruct(form.param,form.objName,form.key) />
+        </cfif>
+        
 		<cfset product = model("Product").findByKey(params.key)>
 		
 		<!--- Verify that the product updates successfully --->

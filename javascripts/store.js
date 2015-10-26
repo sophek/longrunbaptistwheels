@@ -1,3 +1,6 @@
+
+
+
 $("#storeItem-details").hide();
 
 
@@ -90,27 +93,47 @@ function createProduct(){
                successDiv : "success",
                removeDiv : "reload"
            };
-    
-        console.log(obj);
-    
            postAjax(obj);
     }
 
-function createProduct2(){
+function updateProductFinal(){
            var obj = {
-               action : "/products/create",
-               productName : "test item",
-               productPrice : 5.00,
+               action : "/products/update",
+               productName : $("#itemProductNameInput").val(),
+               productPrice : $("#itemProductPriceInput").val(),
                productImage : "Item.jpg",
-               productQtyInStock : 20,
-               productShortDesc : "short desc",
-               productDesc : "long desc",
-               key: 0,
+               productQtyInStock : $("#itemProductQtyInStockInput").val(),
+               productShortDesc : $("#itemProductShortDescInput").val(),
+               productDesc : $("#itemProductDescInput").val(),
+               key:$("#itemProductIdInput").val() ,
                objName: "product",
                successDiv : "success",
                removeDiv : "reload"
            };
            postAjax(obj);
+    }
+
+function updateProduct(id){
+           var obj = {
+               action : "/products/update",
+               productName : "update test item",
+               productPrice : 5.00,
+               productImage : "update Item.jpg",
+               productQtyInStock : 20,
+               productShortDesc : "short desc",
+               productDesc : "long desc",
+               key: id,
+               objName: "product",
+               successDiv : "success",
+               removeDiv : "reload"
+           };
+    
+    $('html, body').animate({ scrollTop: 0 }, 'slow');
+    var isVisible = $( "#entrybox" ).is( ":visible" );
+    if (!isVisible){
+        $("#entrybox").toggle("slow");
+    }
+           //postAjax(obj);
     }
 
 
@@ -199,6 +222,50 @@ function createProduct2(){
                 console.log(xhr)
             });
     }
+
+
+function foo(){
+    alert("hello");
+}
+
+
+$(document).ready(function() {
+// Initalize data
+    
+    $(".updateProductbtn").on('click',function(evt){
+        var id = evt.currentTarget.getAttribute('data-productid');
+        console.log(evt.currentTarget.getAttribute('data-productid'));
+        prepopulate(id);
+        
+    })
+    
+    $("#updateItemProduct").on('click',function(evt){
+        updateProductFinal();
+    })
+    
+    function prepopulate(id){
+        var itemName = $("#itemProductName" + id)[0].innerHTML;
+        var shortDesc = $("#itemProductShortDesc" + id)[0].innerHTML;
+        var longDesc = $("#itemProductLongDesc" + id)[0].innerHTML;
+        var itemPrice = $("#itemProductPrice" + id).val();
+        var itemQtyInStock = $("#itemProductQtyInStock" + id).val();
+        
+        
+        $("#itemProductIdInput").val(id);
+        $("#itemProductNameInput").val(itemName);
+        $("#itemProductPriceInput").val(itemPrice);
+        $("#itemProductShortDescInput").val(shortDesc);
+        $("#itemProductDescInput").val(longDesc);   
+        $("#itemProductQtyInStockInput").val(itemQtyInStock);
+        
+    }
+    
+    
+});
+    
+   
+
+
 
  
 

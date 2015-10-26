@@ -2,6 +2,8 @@ $(document).ready(function() {
 	'use strict';
 // Initalize data
     
+
+    
     var baseUrl = "http://127.0.0.1:8500/longrunbaptistwheels/";
     
     //Toast options
