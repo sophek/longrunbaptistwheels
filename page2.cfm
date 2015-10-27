@@ -1,0 +1,3 @@
+<cfoutput>
+    #url.name#
+</cfoutput>

@@ -4,6 +4,9 @@ var baseUrl = "http://127.0.0.1:8500/longrunbaptistwheels/";
 $("#storeItem-details").hide();
 
 
+//Shopping Cart
+
+
 $(".detailsBtn").on('click', function (evt) {
 
     // Set a data param so the image won't cache.
@@ -236,9 +239,66 @@ function updateProduct(id){
 
 $(document).ready(function() {
 // Initalize data
+var qty = 0;
+var data = {"total":0,"rows":[]};
+var totalCost = 0;    
+    
+    $(".addToCartBtn").on('click',function(evt){
+        qty++;
+        addToCart(evt);
+        console.log(evt.currentTarget.getAttribute('data-productid'));
+        
+        
+    });
+    
+    
+    
+    
+    function addToCart(evt){
+ 
+        $("#qty").html(qty);
+        var productName = evt.currentTarget.getAttribute('data-productname');
+        
+        $("#items").append('<li>' + productName + 1 +'</li>');
+        
+        var name = productName;
+        var price = 10;
+        addProduct(name, price);
+        
+        function addProduct(name, price) {
+            function add() {
+                for (var i = 0; i < data.total; i++) {
+                    var row = data.rows[i];
+                    if (row.name == name) {
+                        row.quantity += 1;
+                        return;
+                    }
+                }
+                data.total += 1;
+                data.rows.push({
+                    name: name,
+                    quantity: 1,
+                    price: price
+                });
+            }
+            add();
+            totalCost += price;
+            console.log(data.rows);
+            
+            $('#items').html(JSON.stringify(data));
+            
+//            $.each( data, function( key, value ) {
+//                $('#items').append('<li>' + key + ": " + value + "</li>" );
+//            });
+            
+            $('div.cart .total').html('Total: $' + totalCost);
+        }    
+        
+    }
+    
+    
+    
 
-    
-    
     
       $(".edit").editable(baseUrl + 'index.cfm/products/updateJeditable', {
 

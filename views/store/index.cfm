@@ -57,7 +57,7 @@
                                 <input type="hidden" id="itemProductQtyInStock#id#" value="#productQtyInstock#" />
                                 
                                 <div class="btn-group">
-                                <button type="button" class="btn-small btn-red">Add to Cart</button>
+                                <button type="button" class="btn-small btn-red addToCartBtn" data-productid="#id#" data-productname="#productName#">Add to Cart</button>
                                 <button type="button" class="btn-small btn-red detailsBtn" id="itemDetailsBtn#id#" data-productid="#id#">Details</button>
                             </div>
                             </div>
@@ -67,6 +67,11 @@
                     </div>
                     </cfoutput>
                 </aside>
+                <aside id="checkout">
+                    <span id="qty">0</span>
+                    <ul id="items"></ul>
+                </aside>
+                
             </div>
         </div>
     </div>

@@ -5,8 +5,6 @@
 <!doctype html>
 <html class="no-js" lang="">
     <head>
-    <script src="https://use.typekit.net/dyx7yee.js"></script>
-    <script>try{Typekit.load({ async: true });}catch(e){}</script>    
     <cfoutput>    
     <!--- Includes `stylesheets/styles.css` --->
     #styleSheetLinkTag("main,vendor")#
@@ -60,7 +58,8 @@
     --->
         
     #javaScriptIncludeTag("store.js")#
-     #javaScriptIncludeTag("jquery.jeditable.mini.js")#     
+     #javaScriptIncludeTag("jquery.jeditable.mini.js")#
+        
     </cfoutput>
 </cfif> 
    </body>
